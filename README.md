@@ -14,7 +14,7 @@
   <img src="https://raw.githubusercontent.com/LiZhongpeng2/todoList/main/demo01.png" width="400"/>
 </div>
 
-[✨ Features]· [🎯 Demo] · [🛠️ Implementation]· [📦 Installation]
+✨ Features · 🎯 Demo · 🛠️ Tech Stack · 📦 Installation
 
 </div>
 
