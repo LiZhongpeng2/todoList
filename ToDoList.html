@@ -267,13 +267,6 @@
                 this.addBtn = document.getElementById('addBtn');
                 this.todoList = document.getElementById('todoList');
 
-                //测试
-                // 添加一个测试日志
-                console.log('TodoApp 已初始化');
-                console.log('找到的输入框：', this.todoInput);
-                console.log('找到的按钮：', this.addBtn);
-
-
                 // 筛选和排序的DOM
                 this.filterSelect = document.getElementById('filterSelect');
                 this.sortSelect = document.getElementById('sortSelect');
@@ -284,7 +277,6 @@
                 //敲回车，这个没太看懂
                 this.todoInput.addEventListener('keydown', (event) => {
                     if (event.key === 'Enter') {
-                        console.log("敲回车了")
                         this.addTodo();
                     }
                 })
