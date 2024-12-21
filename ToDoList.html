@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 16px;  /* 基础字体大小 */
+        }
+
+        body {
+            background: #0f172a;  /* 深蓝色背景 */
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.7);  /* 半透明背景 */
+            backdrop-filter: blur(10px);         /* 毛玻璃效果 */
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            color: #60a5fa;
+            margin-bottom: 2rem;
+            font-size: 3rem;  /* 从 2.5rem 改为 3rem */
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(96, 165, 250, 0.2);
+            color: #e2e8f0;
+            border-radius: 8px;
+            font-size: 1.2rem;  /* 从 1rem 改为 1.2rem */
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+        }
+
+        select {
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 2px solid rgba(96, 165, 250, 0.2);
+            color: #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;  /* 从 1rem 改为 1.2rem */
+        }
+
+        select:hover {
+            border-color: #60a5fa;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            background: #60a5fa;
+            border: none;
+            color: #0f172a;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.2rem;  /* 从 1rem 改为 1.2rem */
+        }
+
+        button:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        #todoList {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        #todoList li {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem;
+            background: rgba(15, 23, 42, 0.6);
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(96, 165, 250, 0.1);
+        }
+
+        #todoList li:hover {
+            transform: translateX(5px);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        #todoList input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #60a5fa;
+        }
+
+        #todoList span {
+            flex: 1;
+            font-size: 1.3rem;  /* 从 1.1rem 改为 1.3rem */
+        }
+
+        #todoList small {
+            color: #94a3b8;
+            font-size: 1.1rem;  /* 从 0.9rem 改为 1.1rem */
+        }
+
+        #todoList .delete-btn {
+            background: #ef4444;
+            padding: 0.5rem 1rem;
+            font-size: 1.1rem;  /* 从 0.9rem 改为 1.1rem */
+            border-radius: 6px;
+        }
+
+        #todoList .delete-btn:hover {
+            background: #dc2626;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(96, 165, 250, 0.1);
+        }
+
+        .stat-item div:first-child {
+            font-size: 3rem;  /* 从 2.5rem 改为 3rem */
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .stat-item div:last-child {
+            color: #94a3b8;
+            font-size: 1.1rem;  /* 从 0.9rem 改为 1.1rem */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #todoList li.completed span {
+            text-decoration: line-through;
+            color: #94a3b8;
+            opacity: 0.7;
+        }
+
+        /* 添加一些炫酷的动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #todoList li {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* 优先级标识 */
+        .priority-high { border-left: 4px solid #ef4444 !important; }
+        .priority-medium { border-left: 4px solid #f59e0b !important; }
+        .priority-low { border-left: 4px solid #10b981 !important; }
+    </style>
+</head>
+
+<body>
+    <div class=container>
+        <h1>TodoLst :)</h1>
+
+        <div class="input-group">
+            <input type="text" id='todoInput' placeholder="Please enter your list here">
+
+            <select id="prioritySelect">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+
+            <button id='addBtn'>Add</button>
+        </div>
+
+        <div class='filters'>
+            <select id="filterSelect">
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+            </select>
+
+            <select id="sortSelect">
+                <option value="date">Order by Date</option>
+                <option value="priority">Order by Priority</option>
+            </select>
+        </div>
+
+        <!-- 代办列表 -->
+        <ul id='todoList'></ul>
+
+        <!-- 三个统计信息 -->
+        <div class='stats'>
+            <div class='stat-item'>
+                <div id="totalTasks">0</div>
+                <div>Total Tasks</div>
+            </div>
+
+            <div class='stat-item'>
+                <div id="completedTasks">0</div>
+                <div>Completed</div>
+            </div>
+
+            <div class='stat-item'>
+                <div id="remainingTasks">0</div>
+                <div>Remaining</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //创建类
+        class TodoApp {
+            constructor() {
+
+                // 所有功能基于数组实现
+                this.todos = [];
+
+                //拿到输入框和按钮,列表的DOM
+                //前后命名要一致
+                this.todoInput = document.getElementById('todoInput');
+                this.addBtn = document.getElementById('addBtn');
+                this.todoList = document.getElementById('todoList');
+
+                //测试
+                // 添加一个测试日志
+                console.log('TodoApp 已初始化');
+                console.log('找到的输入框：', this.todoInput);
+                console.log('找到的按钮：', this.addBtn);
+
+
+                // 筛选和排序的DOM
+                this.filterSelect = document.getElementById('filterSelect');
+                this.sortSelect = document.getElementById('sortSelect');
+
+                // 写事件监听=> 输入框的，按钮的，排序的，筛选的
+
+                //添加代办的两种方式：敲回车，点击Add钮
+                //敲回车，这个没太看懂
+                this.todoInput.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') {
+                        console.log("敲回车了")
+                        this.addTodo();
+                    }
+                })
+                //点按钮时
+                this.addBtn.addEventListener('click', () => this.addTodo());
+
+                //筛选和排序时重新渲染列表，没太看懂=>重新渲染列表
+                this.filterSelect.addEventListener('change', () => {
+                    this.renderTodos();
+                });
+
+                this.sortSelect.addEventListener('change', () => {
+                    this.renderTodos();
+                });
+
+                //初始化应用？？？这是在干啥？？
+                //初始化时渲染一次列表
+                this.renderTodos();
+            }
+
+            //渲染列表方法
+            renderTodos() {
+
+                // 根据筛选条件对数组进行重排序
+
+                //获取当前的排序方式
+                const sortType = this.sortSelect.value;
+
+                //创建数组的副本
+                //语法每太看懂
+                let sortedTodos = [...this.todos];
+
+                //这个排序的语法没太看懂
+                //return 返回的值是排序的依据
+                sortedTodos.sort((a, b) => {
+                    if (sortType === 'date') {
+                        return b.date - a.date;
+                    } else {
+                        //优先级排序
+                        const priorityMap = { 'high': 3, 'medium': 2, 'low': 1 };
+                        return priorityMap[b.priority] - priorityMap[a.priority];
+                    }
+                });
+                //清空现有列表
+                this.todoList.innerHTML = '';
+
+                //根据排序后的数组重新渲染列表
+                sortedTodos.forEach(todo => {
+                    const li = document.createElement('li');
+                    //这个叫做模板字符串，用来创建HTML元素
+                    li.innerHTML = `
+                        <input type="checkbox" ${todo.completed ? 'checked' : ''}>
+                        <span>${todo.text}</span>
+                        <small>${new Date(todo.date).toLocaleString()}</small>
+                        <button class="delete-btn">删除</button>
+                    `;
+
+                    // 为删除按钮添加事件监听
+                    //querySelector使用方法是：querySelector('.delete-btn')
+                    //一般在事件监听中使用
+                    //querySelector 选择器，选择删除按钮
+                    //.delete-btn 是删除按钮的类名
+                    const deleteBtn = li.querySelector('.delete-btn');
+                    deleteBtn.addEventListener('click', () => {
+                        this.deleteTodo(todo.id);
+                    });
+
+                    //切换状态的监听，复选框
+                    const checkbox = li.querySelector('input[type="checkbox"]');
+                    checkbox.addEventListener('change', () => {
+                        this.toggleTodo(todo.id);
+                    });
+
+                    this.todoList.appendChild(li);
+                });
+
+                //调用统计功能
+                this.updateStats();
+            }
+
+            //删除功能
+            deleteTodo(id){
+                this.todos = this.todos.filter(todo => todo.id !== id);
+                this.renderTodos();
+            }
+
+            //切换代办状态方法
+            toggleTodo(id){
+                //根据找到对应的代办
+                //.find() 方法用于查找数组中第一个满足条件的元素
+                //里面的参数表示：todo.id === id 表示找到的代办的id和传入的id相等
+                const todo = this.todos.find(todo => todo.id === id);
+
+                //切换操作
+                if(todo){
+                    todo.completed = !todo.completed;
+                    this.renderTodos();
+                }
+            }
+
+            //第一个方法:添加代办=>AddTodoList
+            addTodo() {
+
+                //先拿到输入框中的信息并做处理：去除其中的空格
+                //.trim() 方法用于移除字符串两端的空格
+                const todoText = this.todoInput.value.trim();
+
+                //把拿到的信息添加到数组里面
+                //如果用户只输��了空格则不执行
+                if (todoText === '') return;
+                else {
+
+                    //创建每一个代办事件的对象，并添加到数组中
+                    const todo = {
+                        id: Date.now(), //拿时间戳作为唯一的标识，后续删除等操作会用
+                        text: todoText,  //代办的文本
+                        complated: false,//是否完成
+                        date: new Date()//创建时间
+                    }
+
+                    //添加对象到数组中
+                    this.todos.push(todo);
+
+                    //清空输入框
+                    this.todoInput.value = '';
+
+                    console.log("创建了：", todo)
+
+
+                    //重新渲染列表
+                    //这一步没太理解
+                    this.renderTodos();
+                }
+            }
+
+
+            //底部统计功能
+            updateStats(){
+
+                //获取统计元素
+                const totalTasks = document.getElementById('totalTasks');
+                const completedTasks = document.getElementById("completedTasks");
+                const remainingTasks = document.getElementById("remainingTasks");
+
+                //更新数字
+                //总的数目就是数组的长度，神
+                totalTasks.textContent = this.todos.length;
+                //fliter() 方法用于过滤数组，返回符合条件的元素
+                //用法是：fliter(function(item){return item.completed})
+                completedTasks.textContent = this.todos.filter(todo => todo.completed).length;
+                //这个fliter()方法需要认真看一下，感觉很有用
+                remainingTasks.textContent = this.todos.filter(todo => !todo.completed).length;
+            }
+        }
+        const app = new TodoApp();
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
