@@ -43,34 +43,26 @@
 
 ## 🛠️ Implementation
 
-### Tech Stack
-\```json
-{
-"frontend": {
-"markup": "HTML5",
-"styling": ["CSS3", "Modern CSS Features"],
-"logic": "Vanilla JavaScript (ES6+)"
-},
+## 🛠️ Tech Stack
 
-"features": {
-"styling": [
-"Flexbox Layout",
-"CSS Grid",
-"CSS Variables",
-"Transitions & Animations",
-"Glassmorphism Effects"
-],
+### Frontend Core
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling features
+- **JavaScript** - Pure vanilla ES6+
 
-"javascript": [
-"ES6 Classes",
-"Event Delegation",
-"Local Storage",
-"DOM Manipulation",
-"Array Methods"
-]
-}
-}
-\```
+### CSS Features
+- 🎨 Flexbox Layout
+- 📏 CSS Grid
+- 🎯 CSS Variables
+- ✨ Transitions & Animations
+- 🌟 Glassmorphism Effects
+
+### JavaScript Implementation
+- 📦 ES6 Classes
+- 🎯 Event Delegation
+- 💾 Local Storage
+- 🔄 DOM Manipulation
+- 🔍 Array Methods
 
 ### Key Design Features
 - 🎭 Glassmorphism effects for modern UI
