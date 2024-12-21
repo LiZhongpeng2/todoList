@@ -11,7 +11,6 @@
 > A sleek, VS Code-inspired todo list application with modern aesthetics and smooth interactions.
 
 <div style="display: flex; justify-content: center; gap: 10px;">
-  <img src="https://raw.githubusercontent.com/LiZhongpeng2/todoList/main/demo.png" width="400"/>
   <img src="https://raw.githubusercontent.com/LiZhongpeng2/todoList/main/demo01.png" width="400"/>
 </div>
 
@@ -40,8 +39,6 @@
   - Pure vanilla JavaScript
   - No external dependencies
   - Lightning-fast interactions
-
-## 🛠️ Implementation
 
 ## 🛠️ Tech Stack
 
