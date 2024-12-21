@@ -15,7 +15,7 @@
   <img src="https://raw.githubusercontent.com/LiZhongpeng2/todoList/main/demo01.png" width="400"/>
 </div>
 
-[✨ Features](#features) · [🎯 Demo](#demo) · [🛠️ Implementation](#implementation) · [📦 Installation](#installation)
+[✨ Features]· [🎯 Demo] · [🛠️ Implementation]· [📦 Installation]
 
 </div>
 
@@ -44,7 +44,7 @@
 ## 🛠️ Implementation
 
 ### Tech Stack
-json
+\```json
 {
 "frontend": {
 "markup": "HTML5",
@@ -70,7 +70,7 @@ json
 ]
 }
 }
-
+\```
 
 ### Key Design Features
 - 🎭 Glassmorphism effects for modern UI
