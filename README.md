@@ -1,40 +1,57 @@
 <div align="center">
+
 # 🚀 TodoList
+
 <p align="center">
-<img src="https://raw.githubusercontent.com/LiZhongpeng2/todoList/main/demo.png"/>
-<img src="https://raw.githubusercontent.com/LiZhongpeng2/todoList/main/demo01.png"/>
-/p>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+</p>
+
 > A sleek, VS Code-inspired todo list application with modern aesthetics and smooth interactions.
-[✨ Features](#features) · [🎯 Demo](#demo) · [🛠️ Implementation](#implementation) · [📦 Installation](#installation)
+
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="https://raw.githubusercontent.com/LiZhongpeng2/todoList/main/demo.png" width="400"/>
+  <img src="https://raw.githubusercontent.com/LiZhongpeng2/todoList/main/demo01.png" width="400"/>
 </div>
+
+[✨ Features](#features) · [🎯 Demo](#demo) · [🛠️ Implementation](#implementation) · [📦 Installation](#installation)
+
+</div>
+
 ## ✨ Features
+
 - 🎨 **VS Code-Inspired Design**
- - Consolas font for authentic code editor feel
- - Dark theme with modern glassmorphism effects
- - Smooth animations and transitions
+  - Consolas font for authentic code editor feel
+  - Dark theme with modern glassmorphism effects
+  - Smooth animations and transitions
+
 - 🔥 **Smart Task Management**
- - Quick task addition with priority levels
- - Intuitive checkbox completion
- - One-click task deletion
+  - Quick task addition with priority levels
+  - Intuitive checkbox completion
+  - One-click task deletion
+
 - 📊 **Powerful Organization**
- - Filter by status (All/Active/Completed)
- - Sort by date or priority
- - Real-time task statistics
+  - Filter by status (All/Active/Completed)
+  - Sort by date or priority
+  - Real-time task statistics
+
 - ⚡ **Performance Focused**
- - Pure vanilla JavaScript
- - No external dependencies
- - Lightning-fast interactions
-## 🎯 Demo
-[Add your application screenshot here]
+  - Pure vanilla JavaScript
+  - No external dependencies
+  - Lightning-fast interactions
+
 ## 🛠️ Implementation
+
 ### Tech Stack
-javascript
+json
 {
 "frontend": {
 "markup": "HTML5",
 "styling": ["CSS3", "Modern CSS Features"],
 "logic": "Vanilla JavaScript (ES6+)"
 },
+
 "features": {
 "styling": [
 "Flexbox Layout",
@@ -43,6 +60,7 @@ javascript
 "Transitions & Animations",
 "Glassmorphism Effects"
 ],
+
 "javascript": [
 "ES6 Classes",
 "Event Delegation",
@@ -53,20 +71,12 @@ javascript
 }
 }
 
+
 ### Key Design Features
 - 🎭 Glassmorphism effects for modern UI
 - 🌗 Dark theme optimized for long sessions
 - ✨ Micro-interactions for better UX
 - 📱 Responsive design for all devices
-
-## 📦 Installation
-bash
-Clone the repository
-git clone https://github.com/LiZhongpeng2/todoList.git
-Navigate to project directory
-cd todoList
-Open in your browser
-Simply open ToDoList.html in your favorite browser!
 
 ## 🤝 Contributing
 
@@ -84,3 +94,7 @@ Feel free to:
 <div align="center">
   Made with ❤️ by <a href="https://github.com/LiZhongpeng2">LiZhongpeng2</a>
 </div>
+
+
+
+
